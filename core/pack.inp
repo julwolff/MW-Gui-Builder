@@ -1,0 +1,9 @@
+# created by fftool
+tolerance 2.5
+filetype xyz
+output simbox.xyz
+
+structure ../molecules/tip4p_pack.xyz
+  number 50
+  inside box 1.5000 1.5000 1.5000 10.3419 10.3419 10.3419
+end structure
