@@ -17,7 +17,7 @@ from core.xyz2inp import (
 )
 
 class GuiConverter:
-    """Interface graphique pour convertir un fichier .xyz en fichier .inp compatible MetalWalls."""
+    """Graphical interface to convert a .xyz file into a MetalWalls-compatible .inp file."""
 
     ANG_TO_BOHR_CONV = 1.890
     MARGIN = 1.0
@@ -58,23 +58,24 @@ class GuiConverter:
             self.input_path_var.set(path)
 
     def launch(self):
-        """Convertit le fichier .xyz en .inp pour MetalWalls avec calcul de la boîte et mise en forme."""
+        """Converts a .xyz file to .inp for MetalWalls, computing the box dimensions and formatting."""
+
         input_path = self.input_path_var.get().strip()
         output_name = self.output_name_var.get().strip()
 
         if not input_path or not output_name:
-            messagebox.showerror("Erreur", "Veuillez remplir les deux champs.")
+            messagebox.showerror("Error", "Please fill in both fields.")
             return
 
         if not os.path.exists(input_path):
-            messagebox.showerror("Erreur", f"Le fichier '{input_path}' n'existe pas.")
+            messagebox.showerror("Error", f"The file '{input_path}' does not exist.")
             return
 
-        self.progress.config(text="🕒 Conversion en cours...")
+        self.progress.config(text="🕒 Converting...")
         self.master.update_idletasks()
 
         try:
-            # Lire les coordonnées
+            # Read coordinates
             with open(input_path, "r") as f:
                 lines = f.readlines()
 
@@ -83,18 +84,18 @@ class GuiConverter:
                 electrode_atom_number = int(lines[1].split()[8])
             except (IndexError, ValueError):
                 electrode_atom_number = 0
-                messagebox.showwarning("Attention", "Nombre d'atomes de l'électrode non trouvé. Mis à 0.")
+                messagebox.showwarning("Warning", "Number of electrode atoms not found. Set to 0.")
 
             x, y, z = [], [], []
             for i, line in enumerate(lines[2:], start=3):
                 tokens = line.split()
                 if len(tokens) < 4:
-                    raise ValueError(f"Ligne {i} invalide : {line.strip()}")
+                    raise ValueError(f"Invalid line {i}: {line.strip()}")
                 x.append(float(tokens[1]))
                 y.append(float(tokens[2]))
                 z.append(float(tokens[3]))
 
-            # Boîte de simulation
+            # Simulation box
             x_box = (max(x) + self.MARGIN) * self.ANG_TO_BOHR_CONV
             y_box = (max(y) + self.MARGIN) * self.ANG_TO_BOHR_CONV
             z_box = (max(z) + self.MARGIN) * self.ANG_TO_BOHR_CONV
@@ -105,12 +106,12 @@ class GuiConverter:
 
             mw_file_writting(input_path, output_name, header, formatted_atoms)
 
-            self.progress.config(text="✅ Conversion terminée")
-            messagebox.showinfo("Succès", f"Fichier converti avec succès en '{output_name}'")
+            self.progress.config(text="✅ Conversion completed")
+            messagebox.showinfo("Success", f"File successfully converted to '{output_name}'")
 
         except Exception as e:
-            self.progress.config(text="❌ Erreur")
-            messagebox.showerror("Erreur de conversion", f"Une erreur est survenue :\n{e}")
+            self.progress.config(text="❌ Error")
+            messagebox.showerror("Conversion Error", f"An error occurred:\n{e}")
             return
 
 if __name__ == "__main__":
