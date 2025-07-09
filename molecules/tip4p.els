@@ -1,0 +1,14 @@
+O0 point 0.00 0.77486  3.1589
+H1 point 0.5564
+H2 point 0.5564
+Mw point -1.1128
+PARAMETERS
+    fourth_site 0.292151659 # distance OM
+
+    # Rigid constraints
+    constraint 0  1   1.80884585   # constrained radius for a pair of sites (bohr)
+    constraint 0  2   1.80884585   # constrained radius for a pair of sites (bohr)
+    constraint 1  2   2.860858   # constrained radius for a pair of sites (bohr)
+
+    constraints_algorithm rattle 1.0e-9 100
+

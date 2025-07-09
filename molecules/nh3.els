@@ -1,0 +1,17 @@
+O0 point -1.02 0.711 3.42
+H0 point 0.34 0.00 0.00
+H1 point 0.34 0.00 0.00
+H2 point 0.34 0.00 0.00
+
+PARAMETERS
+        # Rigid constraints
+
+    constraint 0  1  1.9086232485   # constrained radius for a pair of sites (bohr)
+    constraint 0  2  1.9086232485   # constrained radius for a pair of sites (bohr)
+    constraint 0  3  1.9086232485   # constrained radius for a pair of sites (bohr)
+    constraint 1  2  3.0871466264   # constrained radius for a pair of sites (bohr)
+    constraint 1  3  3.0871466264   # constrained radius for a pair of sites (bohr)
+    constraint 2  3  3.0871466264   # constrained radius for a pair of sites (bohr)
+    
+    
+    

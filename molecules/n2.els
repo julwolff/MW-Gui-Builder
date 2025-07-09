@@ -1,0 +1,7 @@
+N0 point 0.00 0.5936 3.798
+N1 point 0.00 0.5936 3.798
+
+PARAMETERS
+        # Rigid constraints
+
+    constraint 0  1  2.07416339   # constrained radius for a pair of sites (bohr)
