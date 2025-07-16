@@ -9,14 +9,13 @@
 MWGb automates the generation of the following MetalWalls input files:
 
 - `.inpt` — atom-ordered structure file
-- `.prm` — parameter file for NVE/NVT/NPT ensembles
 - `.els` — force field and charge definition per atom type
 - `electrode.txt` — lattice and charge definitions for metallic electrodes
 
 It also includes internal tools to:
 
 - Reorder atoms to match MetalWalls requirements
-- Convert `.gro` or `.xyz` files to `.inpt`
+- Convert `.xyz` files to `.inpt`
 - Build and insert crystalline electrodes
 - Interface with **Packmol** and **fftool** for molecular packing
 
@@ -28,8 +27,8 @@ It also includes internal tools to:
   - ✅ Box generation via `fftool` and `Packmol`
   - ✅ File conversion and atom reordering for `.inpt`
   - ✅ Electrode lattice generation and insertion
-  - ✅ Full `.prm` file writer for NVE, NVT, NPT
-- Compatible with `.gro`, `.xyz`, `.els`, `mass.txt`, `electrode.txt`
+  - ✅ Full parameter`.inpt` file writer for NVE, NVT, NPT
+- Compatible with , `.xyz`, `.els`, `mass.txt`, `electrode.txt`
 - Automatically recognizes molecules, ions, and electrodes
 - Supports charge types: `point`, `neutral`, `gaussian`
 - Uses Lorentz-Berthelot rules for Lennard-Jones parameters
