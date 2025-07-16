@@ -1,0 +1,8 @@
+numpy
+tkinter
+os
+argparse
+math
+collections
+xml
+itertools
