@@ -1,12 +1,12 @@
-# ElecSim
+# Metalwalls-Gui-Builder
 
-**ElecSim** is an open-source Python package and graphical interface for preparing simulation-ready input files for the [MetalWalls](https://gitlab.com/ampere2/metalwalls) molecular dynamics software. It provides a modular GUI that enables researchers to define complex electrochemical systems, including electrolyte molecules, ionic species, and electrodes, and generate all necessary structure and parameter files for simulations at constant potential.
+**MW-Gui-builder** is an open-source Python package and graphical interface for preparing simulation-ready input files for the [MetalWalls](https://gitlab.com/ampere2/metalwalls) molecular dynamics software. It provides a modular GUI that enables researchers to define complex electrochemical systems, including electrolyte molecules, ionic species, and electrodes, and generate all necessary structure and parameter files for simulations at constant potential.
 
 ---
 
 ## 🔍 What Does It Do?
 
-ElecSim automates the generation of the following MetalWalls input files:
+MWGb automates the generation of the following MetalWalls input files:
 
 - `.inpt` — atom-ordered structure file
 - `.prm` — parameter file for NVE/NVT/NPT ensembles
@@ -42,8 +42,7 @@ It also includes internal tools to:
 ### Requirements
 
 - Python 3.8 or higher
-- `tkinter` (included by default with Python)
-- `numpy`
+- Packmol
 
 ### Installation
 
@@ -93,5 +92,6 @@ pytest core/tests/
 7. Launch your MetalWalls simulation with the prepared files
 
 📄 License
+
 This project is licensed under the MIT License.
 
