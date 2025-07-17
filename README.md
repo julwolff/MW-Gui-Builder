@@ -6,13 +6,13 @@
 
 ## 🔍 What Does It Do?
 
-MWGb automates the generation of the following MetalWalls input files:
+MWGb automates the generation of the following MetalWalls input files ('.inpt') using as an input:
 
-- `.inpt` — atom-ordered structure file
+- `.xyz` — atom-ordered structure file
 - `.els` — force field and charge definition per atom type
 - `electrode.txt` — lattice and charge definitions for metallic electrodes
 
-It also includes internal tools to:
+It includes internal tools to:
 
 - Reorder atoms to match MetalWalls requirements
 - Convert `.xyz` files to `.inpt`
