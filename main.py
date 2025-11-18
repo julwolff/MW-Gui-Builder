@@ -18,7 +18,7 @@ class ElecSimGui:
     def __init__(self):
         # Create the main window
         self.window = tk.Tk()
-        self.window.title("ElecSim")
+        self.window.title("GUI Builder")
 
         # Create a frame to center the buttons
         self.button_frame = tk.Frame(self.window, padx=20, pady=20)
