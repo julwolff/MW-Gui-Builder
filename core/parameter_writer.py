@@ -311,7 +311,6 @@ def search_pattern(mols, n_moles, species, species_recensed, first_time = True):
             if species.count(species[i]) == 1:
                 species_recensed.append(species[i])
                 
-        # print ('alone_species =',  species_recensed)
             
     for k in range(len(species)):
         
@@ -477,13 +476,15 @@ def add_parameters(molecules,species,electrodes):
         bn_parameters = []
         
         with open(f"./molecules/{molecule.name}.els") as file:
+            
+            print(f'opening {molecule.name}.els')
             lines = file.readlines()
             
             # Determine the length of the electrostat table
             # with the keyword parameters1
             
 # =============================================================================
-#                     WARNING : IT IS IMPORTANT TO NOT A FREE LINES BEFORE THE WORD PARAMETERS
+#                     WARNING : IT IS IMPORTANT TO NOT LET FREE LINES BEFORE THE WORD PARAMETERS
 # =============================================================================
 
 # =============================================================================
@@ -493,6 +494,8 @@ def add_parameters(molecules,species,electrodes):
 # =============================================================================
             
             for i in range(len(lines)):
+                
+                
                 if "PARAMETERS" in lines[i]:
                     size_elec = i
                      
@@ -500,8 +503,8 @@ def add_parameters(molecules,species,electrodes):
                     
                     for j in range(size_elec + 1,len(lines)):
                         
+                        
                     # Consider all the posibilities
-                        print(lines[j].split()) 
                         if "constraint" in lines[j].split():
                             
                             # Add to the parameteres a contraint parameters with the two sites corresponding to the 2 index in the param file
@@ -509,6 +512,8 @@ def add_parameters(molecules,species,electrodes):
                             bn_parameters.append(Constraint_parameters(molecule.sites[int(lines[j].split()[1])],
                                                                        molecule.sites[int(lines[j].split()[2])],
                                                                        float(lines[j].split()[3])))
+                            
+                            
                             
                             if "constraint" not in lines[j+1].split():
                                 
@@ -556,10 +561,13 @@ def add_parameters(molecules,species,electrodes):
                             print(f"lines :  '' {lines[j]} '' in file ''{molecule.name}.els'' does not correspond to any parameters")
                             
                             
+
+                    
                     # Add it in molecules
                     
                     molecule.parameters = [i.line_print() for i in bn_parameters] #Don't know why it works but it works, don't touch it except if you are skilled
                     
+
                     
                     # Stop the research
                     
@@ -591,7 +599,7 @@ def add_parameters(molecules,species,electrodes):
             
             for i in lines:
                 
-                biblio_electro.append(i.split())            
+                biblio_electro.append(i.split())
 
                 
                                     

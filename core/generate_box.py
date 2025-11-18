@@ -6,6 +6,7 @@ Created on Fri Jun 27 09:26:27 2025
 """
 
 def distinct_species(mols):
+    
      
 
      species = []
@@ -43,6 +44,8 @@ def distinct_species(mols):
              for k in range(len(lines)):
                  wfile.write(lines[k])
                      
+                 
+    
                  
                      
 

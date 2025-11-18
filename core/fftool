@@ -2792,7 +2792,7 @@ def main():
             boxtol = 0.0
         else:
             boxtol = 1.5
-        sim.writepackmol('pack.inp', '../simbox.xyz', args.tol, boxtol)
+        sim.writepackmol('pack.inp', 'simbox.xyz', args.tol, boxtol)
 
 
 if __name__ == '__main__':
