@@ -93,13 +93,23 @@ class GuiParameterGenerator:
             return
 
         try:
+            
+            print('Searching molecules')
             mols = search_molecule(filein)
+            print('Instancie the molecules')
             molecules = instancie_molecules(mols)
+            print('Instancie species')
             species = instancie_species(molecules)
+            print('Instancie electrodes')
             electrodes = instancie_electrodes(mols, molecules)
+            print('Add electrode to species list')
             species = add_electrode_to_species(electrodes, species, filein)
+            print('Add parameters')
             species, molecules = add_parameters(molecules, species, electrodes)
+            print('Write Lennard-Jones parameters')
             lj_pairs = instancie_lj_pair(species)
+            
+            print('Write runtime.inpt file')
 
             write_param_files(
                 filein=filein,

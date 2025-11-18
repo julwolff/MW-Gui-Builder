@@ -6,8 +6,67 @@ Modern GUI for ElecSim Box Generator
 import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
-from core.generate_box import communicate_box_data, distinct_species, elongate_box, change_len_box
+from core.generate_box import communicate_box_data, elongate_box, change_len_box
 
+# CLASS
+
+class Atom_ff:
+    
+    def __init__(self, list_line,name):
+        
+        list_line = list_line.split()
+        self.name = name
+        self.charge = list_line[2]
+        try:
+            self.sigma = list_line[4]
+        except:
+            self.sigma = 0.000
+        try:
+            self.epsilon = list_line[3]
+        except:
+            self.epsilon = 0.000
+        
+        
+        
+        with open("ressources/mass.txt",'r') as mass_file:
+            lines = mass_file.readlines()
+            
+            for i in range(len(lines)):
+                lines[i] = lines[i].split()
+                
+        # Instancie the mass of each species
+        
+        # For each sites in each molecules
+
+                
+                
+                name_for_mass = self.name
+                
+                # Retire les chiffres du nom de l'espece pour
+                # determiner sa masse dans le tableau
+                
+                
+                for i in name_for_mass:
+                    if not i.isalpha():
+                        name_for_mass = name_for_mass.replace(i, "")
+                        
+                for i in range(len(lines)):
+                    if name_for_mass == lines[i][0]:
+                        self.mass = lines[i][1]
+                        
+                    elif i == len(lines):
+                        print(f"no mass found for {self.name}")
+                        
+    def print_ff(self):
+        return (
+            f"{self.name:<4}"        # type, left-aligned, width 4
+            f"{self.name:<4}"        # repeat type
+            f"{float(self.mass):>8.3f}"   # mass, right-aligned, 3 decimals
+            f"{float(self.charge):>8.2f}" # charge, right-aligned, 2 decimals
+            f"{'lj':>6}"             # potential keyword
+            f"{float(self.sigma):>9.4f}"  # sigma, 4 decimals
+            f"{float(self.epsilon):>9.5f}"# epsilon, 5 decimals
+        )
 
 class GuiBoxGenerator:
     """Modern ttk GUI for generating molecular boxes."""
@@ -167,26 +226,184 @@ class GuiBoxGenerator:
             messagebox.showerror("Error", "Please select an input mode (density or box size).")
             return
 
+
+        species = []
+
+        # List all the species contained in _pack.xyz
+        for mol in range(len(self.molecule_list)):
+            file_pack = "molecules/" + self.molecule_list[mol].split('.')[0] + ".xyz"
+            print(f"Processing file: {file_pack}")
+            with open(file_pack, 'r') as rfile:
+                lines = rfile.readlines()
+                for i in range(2, len(lines)):
+                    species.append(lines[i].split()[0])
+                    print(f"Found species: {species[-1]}")
+
+        # Distinguish different species
+        for i in range(len(species)):
+            j = 0
+            while species[i] + str(j) in species != True:
+                j += 1
+            species[i] = species[i] + str(j)
+            
+        print(species)
+        
+        
+        # Rewrite each file
+        i = 2
+        for mol in range(len(self.molecule_list)):
+            file_pack = "molecules/" + self.molecule_list[mol].split('.')[0] + ".xyz"
+            file_dest = "molecules/" + self.molecule_list[mol].split('.')[0] + "_ff.xyz"
+            
+            print(f"Rewriting file: {file_pack}")
+    
+            with open(file_pack, 'r') as rfile:
+                lines = rfile.readlines()
+                for j in range(2, len(lines)):
+                    lines[j] = lines[j].replace(lines[j].split()[0], species[i - 2])
+                    i += 1
+                
+                tmp_name = lines[1].split()
+                tmp_name.append('ff.ff\n')
+                lines[1] = ' '.join(tmp_name)
+                    
+            # Rewrite in the files
+            with open(file_dest, 'w') as wfile:
+                for k in range(len(lines)):
+                    wfile.write(lines[k])
+
+        
+        # Prepare ff_param and write tmp structures
+        
+        sto_ff = []
+        
+        for mol in range(len(self.molecule_list)):
+            file_els = "molecules/" + self.molecule_list[mol].split('.')[0] + ".els"
+            with open (file_els,'r') as rfile:
+                lines = rfile.readlines()
+                for i in range(len(lines)):
+                        
+                    if "PARAMETERS" in lines[i]:
+                        break
+                    
+                    else:
+                        sto_ff.append(lines[i])
+                        
+                
+        
+        # Create Atom_ff objects
+        
+        forcefield=[]
+        
+        for i in range(len(species)):
+            
+            at_ff = Atom_ff(sto_ff[i], species[i])
+            forcefield.append(at_ff)
+            
+        with open("ff.ff",'w') as wfile:
+            
+            lines = ["ATOMS\n","#   type   m/u     q/e    pot   pars\n"]
+            
+            for i in forcefield:
+                lines.append((i.print_ff())+"\n")
+            
+            for k in range(len(lines)):
+                wfile.write(lines[k])
+            
+        
+            
+                        
+                
+            
+        self.molecule_ff_list = []
+        
+        for mol in self.molecule_list:
+            
+            name = mol.split('.')[0]
+            
+            idid = name + "_ff.xyz"
+            
+            self.molecule_ff_list.append(idid)
+            
+        print(self.molecule_ff_list)
+                                
+                    
+                                         
+              
+            
+
+
         # Construct fftool command
         command = "core/fftool"
-        for mol, num in zip(self.molecule_list, self.number_list):
+        for mol, num in zip(self.molecule_ff_list, self.number_list):
             command += f" {num} molecules/{mol}"
 
         if self.density_selected:
             command += f" -r {self.size_entry.get()}"
         elif self.border_selected:
             command += f" -b {self.size_entry.get()}"
-
+         
         try:
-            messagebox.showinfo("Running", "Generating box with fftool...")
+            messagebox.showinfo("Running", "Generating packmol file with fftool...")
             subprocess.call(command, shell=True)
-            distinct_species(self.molecule_list)
 
             if self.box_selected:
                 change_len_box()
             elif self.quarter_selected:
                 elongate_box(5)
+        
+        except Exception as e:
+            messagebox.showerror("Execution Error", f"An error occurred:\n{str(e)}")
 
+        
+        species = []
+
+        # List all the species contained in _ff_pack.xyz
+        for mol in range(len(self.molecule_ff_list)):
+            file_pack = "molecules/" + self.molecule_list[mol].split('.')[0] + ".xyz"
+            print(f"Processing file: {file_pack}")
+            with open(file_pack, 'r') as rfile:
+                lines = rfile.readlines()
+                for i in range(2, len(lines)):
+                    species.append(lines[i].split()[0])
+                    print(f"Found species: {species[-1]}")
+
+        # Distinguish different species
+        for i in range(len(species)):
+            j = 0
+            while species[i] + str(j) in species != True:
+                j += 1
+            species[i] = species[i] + str(j)
+            
+        print(species)
+            
+        # Rewrite each file
+        i = 2
+        for mol in range(len(self.molecule_ff_list)):
+            file_pack = "molecules/" + self.molecule_list[mol].split('.')[0] + ".xyz"
+            file_dest = "molecules/" + self.molecule_ff_list[mol].split('.')[0] + "_pack.xyz"
+            
+            print(f"Rewriting file: {file_pack}")
+    
+            with open(file_pack, 'r') as rfile:
+                lines = rfile.readlines()
+                for j in range(2, len(lines)):
+                    lines[j] = lines[j].replace(lines[j].split()[0], species[i - 2])
+                    i += 1
+                
+                tmp_name = lines[1].split()
+                tmp_name.append('ff.ff\n')
+                lines[1] = ' '.join(tmp_name)
+                    
+            # Rewrite in the files
+            with open(file_dest, 'w') as wfile:
+                for k in range(len(lines)):
+                    wfile.write(lines[k])
+
+            
+
+
+        try:
             messagebox.showinfo("Packmol", "Launching packmol...")
             subprocess.call("packmol < pack.inp", shell=True)
             communicate_box_data()
