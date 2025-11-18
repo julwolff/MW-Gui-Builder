@@ -1,0 +1,119 @@
+# System configuration
+# ====================
+
+# Global simulation parameters
+# ----------------------------
+num_steps     100000 # number of steps in the run
+timestep     41.341 # timestep (a.u)
+temperature   300 # temperature (K)
+
+# Periodic boundary conditions
+# ----------------------------
+num_pbc  3
+
+# Thermostat:
+# -----------
+thermostat
+  chain_length  5
+  relaxation_time 4134.1
+  tolerance  1.0e-17
+  max_iteration  100
+
+species
+  species_type
+    name          O0
+    count         5000
+    mass          16.00
+    mobile        True
+    charge point 0.00 
+
+  species_type
+    name          H0
+    count         5000
+    mass          1.008
+    mobile        True
+    charge point 0.5564 
+
+  species_type
+    name          H1
+    count         5000
+    mass          1.008
+    mobile        True
+    charge point 0.5564 
+
+  species_type
+    name          Mw0
+    count         5000
+    mass          0.00
+    mobile        True
+    charge point -1.1128 
+
+    fourth_site_atom
+
+  species_type
+    name          Graph1
+    count         3960
+    mass          12.0
+    mobile        False
+    charge gaussian 0.955234657 0 
+
+  species_type
+    name          Graph0
+    count         3960
+    mass          12.0
+    mobile        False
+    charge gaussian 0.955234657 0 
+
+
+
+molecules
+
+  molecule_type
+    name          tip4p
+    count          5000
+    sites O0 H0 H1 Mw0
+
+    constraint O0 H0 1.80884585
+    constraint O0 H1 1.80884585
+    constraint H0 H1 2.860858
+    constraints_algorithm rattle 1e-09 100
+
+    fourth_site 0.283458898 # distance OM
+
+
+electrodes
+  electrode_type
+    name Graph1
+    species  Graph1
+    potential  0.00
+    thomas_fermi_length
+    voronoi_volume  electrode_type
+    name Graph0
+    species  Graph0
+    potential  0.00
+    thomas_fermi_length
+    voronoi_volume  electrode_charges matrix_inversion
+
+# Interactions definition
+# -----------------------
+interactions
+  coulomb
+    coulomb_rtol 2.0e-5    # coulomb rtol
+    coulomb_rcut 17.005    # coulomb cutoff (bohr)
+    coulomb_ktol 1.0e-7    # coulomb ktol
+
+  lennard-jones
+    lj_rcut  17.005         # lj cutoff (bohr)
+    # lj parameters: epsilon in kJ/mol, sigma in angstrom
+
+    lj_pair    O0 Graph1 0.42762946577615535 3.18645 
+    lj_pair    O0 Graph0 0.42762946577615535 3.18645 
+    lj_pair    Graph1 Graph0 0.236 3.214 
+    lj_pair    O0 O0 0.77486 3.1589 
+    lj_pair    Graph1 Graph1 0.236 3.214 
+    lj_pair    Graph0 Graph0 0.236 3.214 
+
+# Output section
+# ----------------------
+output
+  default 0
