@@ -1,0 +1,164 @@
+# System configuration
+# ====================
+
+# Global simulation parameters
+# ----------------------------
+num_steps     100000 # number of steps in the run
+timestep     41.341 # timestep (a.u)
+temperature   300 # temperature (K)
+
+# Periodic boundary conditions
+# ----------------------------
+num_pbc  3
+
+# Thermostat:
+# -----------
+thermostat
+  chain_length  5
+  relaxation_time 4134.1
+  tolerance  1.0e-17
+  max_iteration  100
+
+species
+  species_type
+    name          O0
+    count         3000
+    mass          16.00
+    mobile        True
+    charge point 0.00 
+
+  species_type
+    name          H0
+    count         3000
+    mass          1.008
+    mobile        True
+    charge point 0.5564 
+
+  species_type
+    name          H1
+    count         3000
+    mass          1.008
+    mobile        True
+    charge point 0.5564 
+
+  species_type
+    name          Mw0
+    count         3000
+    mass          0.00
+    mobile        True
+    charge point -1.1128 
+
+    fourth_site_atom
+
+  species_type
+    name          Na0
+    count         54
+    mass          22.99
+    mobile        True
+    charge point 0.85 
+
+  species_type
+    name          O1
+    count         54
+    mass          16.00
+    mobile        True
+    charge point -1.3805 
+
+  species_type
+    name          H2
+    count         54
+    mass          1.008
+    mobile        True
+    charge point 0.5305 
+
+  species_type
+    name          Pt1
+    count         490
+    mass          106.42
+    mobile        False
+    charge gaussian 0.955234657 0 
+
+  species_type
+    name          Pt0
+    count         490
+    mass          106.42
+    mobile        False
+    charge gaussian 0.955234657 0 
+
+
+
+molecules
+
+  molecule_type
+    name          tip4p
+    count          3000
+    sites O0 H0 H1 Mw0
+
+    constraint O0 H0 1.80884585
+    constraint O0 H1 1.80884585
+    constraint H0 H1 2.860858
+    constraints_algorithm rattle 1e-09 100
+
+    fourth_site 0.283458898 # distance OM
+
+  molecule_type
+    name          oh
+    count          54
+    sites O1 H2
+
+    constraint O1 H2 1.851932
+    constraints_algorithm rattle 1e-09 100
+
+
+
+electrodes
+  electrode_type
+    name Pt1
+    species  Pt1
+    potential  0.00
+    thomas_fermi_length
+    voronoi_volume  electrode_type
+    name Pt0
+    species  Pt0
+    potential  0.00
+    thomas_fermi_length
+    voronoi_volume  electrode_charges matrix_inversion
+
+# Interactions definition
+# -----------------------
+interactions
+  coulomb
+    coulomb_rtol 2.0e-5    # coulomb rtol
+    coulomb_rcut 17.005    # coulomb cutoff (bohr)
+    coulomb_ktol 1.0e-7    # coulomb ktol
+
+  lennard-jones
+    lj_rcut  17.005         # lj cutoff (bohr)
+    # lj parameters: epsilon in kJ/mol, sigma in angstrom
+
+    lj_pair    O0 Na0 1.0681150547389546 2.688135 
+    lj_pair    O0 O1 0.4357071264048822 3.5044500000000003 
+    lj_pair    O0 H2 0.3734632512041847 2.3009500000000003 
+    lj_pair    O0 Pt1 2.4600115040381416 2.84445 
+    lj_pair    O0 Pt0 2.4600115040381416 2.84445 
+    lj_pair    Na0 O1 0.6006057109285592 3.033685 
+    lj_pair    Na0 H2 0.5148048950816222 1.830185 
+    lj_pair    Na0 Pt1 3.3910323442869132 2.373685 
+    lj_pair    Na0 Pt0 3.3910323442869132 2.373685 
+    lj_pair    O1 H2 0.21 2.6465 
+    lj_pair    O1 Pt1 1.3832750991758653 3.19 
+    lj_pair    O1 Pt0 1.3832750991758653 3.19 
+    lj_pair    H2 Pt1 1.1856643707221703 1.9865 
+    lj_pair    H2 Pt0 1.1856643707221703 1.9865 
+    lj_pair    Pt1 Pt0 7.81 2.53 
+    lj_pair    O0 O0 0.77486 3.1589 
+    lj_pair    Na0 Na0 1.472356 2.21737 
+    lj_pair    O1 O1 0.245 3.85 
+    lj_pair    H2 H2 0.180 1.443 
+    lj_pair    Pt1 Pt1 7.810 2.53 
+    lj_pair    Pt0 Pt0 7.810 2.53 
+
+# Output section
+# ----------------------
+output
+  default 0
