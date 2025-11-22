@@ -28,7 +28,7 @@ It includes internal tools to:
   - ✅ File conversion and atom reordering for `.inpt`
   - ✅ Electrode lattice generation and insertion
   - ✅ Full parameter`.inpt` file writer for NVE, NVT, NPT
-- Compatible with , `.xyz`, `.els`, `mass.txt`, `electrode.txt`
+- Compatible with , `.xyz`, `.els`, using a `mass.txt`, `electrode.txt`
 - Automatically recognizes molecules, ions, and electrodes
 - Supports charge types: `point`, `neutral`, `gaussian`
 - Uses Lorentz-Berthelot rules for Lennard-Jones parameters
@@ -47,8 +47,8 @@ It includes internal tools to:
 
 Clone the repository and install the required packages:
 
-git clone https://github.com/julwolff/M-SimBu.git
-cd M-SimBu
+git clone https://github.com/julwolff/MW-Gui-Builder.git
+cd MW-Gui-Builder
 pip install -r requirements.txt
 
 
@@ -63,7 +63,7 @@ This will open a GUI with four independent tools:
 Box Generator	Builds packed structures using fftool
 Format for MW	Converts .gro or .xyz to .inpt
 Electrode Generator	Adds electrodes based on lattice templates
-Parameter Generator	Writes .prm files for MetalWalls
+Parameter Generator	Writes .inpt files for MetalWalls
 
 📂 Input File Formats
 Detailed input file specifications can be found in the docs folder.
@@ -82,15 +82,16 @@ pytest core/tests/
 
 🧑‍🔬 Example Workflow
 
-1. Create your molecule and parameter files (.xyz, .els, mass.txt)
+1. Create your molecule and parameter files (.xyz, .els, electrode.txt)
 2. Open ElecSim via python main.py
 3. Use Box Generator to place molecules in a simulation box
-4. Use Format for MW to convert structure into .inpt
-5. Use Electrode Generator to insert lattice-defined electrodes
-6. Use Parameter Generator to define simulation settings in .prm
+4. Use Electrode Generator to insert lattice-defined electrodes
+5. Use Format for MW to convert structure into .inpt
+6. Use Parameter Generator to define simulation settings in runtime.inpt
 7. Launch your MetalWalls simulation with the prepared files
 
 📄 License
 
 This project is licensed under the MIT License.
+
 
