@@ -1,5 +1,5 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: '"MW-Gui-Builder": An interface for simplified preparation for Metalwalls package application'
 tags:
   - Python
   - Molecular Dynamics
