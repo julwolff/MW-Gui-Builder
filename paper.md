@@ -128,4 +128,4 @@ electrodes, such as curved surfaces, partially covered electrodes, and
 bimetallic materials. These additions will allow researchers to model a
 broader range of realistic electrochemical interfaces.
 
-## References
+# References
