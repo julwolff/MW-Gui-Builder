@@ -103,10 +103,16 @@ You now go the
    ```bash
    runtime.inpt
    ```
+
  and
 
-    ```bash
+   ```bash
    data.inpt
    ```
+
 file needed to launch a simulation with Metalwalls package.
-To launch it, go in the file containing .inpt file and run ./mw
+To launch it, go in the file containing .inpt file and run 
+
+   ```bash
+   path/mw
+   ```
