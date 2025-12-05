@@ -99,5 +99,14 @@
 
 ## 6. Run simulation
 
-You now go the "runtime.inpt" and "data.inpt" file needed to launch a simulation with Metalwalls package.
+You now go the 
+   ```bash
+   runtime.inpt
+   ```
+ and
+
+    ```bash
+   data.inpt
+   ```
+file needed to launch a simulation with Metalwalls package.
 To launch it, go in the file containing .inpt file and run ./mw
