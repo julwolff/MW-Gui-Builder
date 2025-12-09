@@ -1,4 +1,4 @@
-# Tutorial: Ionic Liquid [EMIM][TFSI] split by Pt electrode
+# Tutorial: 1M aqueous NAOH between Pt electrodes
 
 ## 1. Generate the Water Box
 
