@@ -32,7 +32,7 @@
    simbox.xyz
    ```
 
-3. Write the desired electrode name (e.g., **Pt1** in the example).
+3. Write the desired electrode name (e.g., **Cgraph1** in the example).
 
 4. Select **"C"** in the electrode menu.
 
@@ -56,9 +56,14 @@
    simbox_electrode.xyz
    ```
 
-2. Change the electrode name (e.g., **Pt0** in the example).
+2. Change the electrode name (e.g., **Cgraph0** in the example).
 
-3. Click **"Launch"**.  
+3. Set the electrode parameters:
+   - **Electrode position:** `0`
+   - **z dimension:** `8`
+   - **Buffer:** `2`
+     
+4. Click **"Launch"**.  
    This generates the final structure file:
    ```
    simbox_electrode_electrode.xyz
