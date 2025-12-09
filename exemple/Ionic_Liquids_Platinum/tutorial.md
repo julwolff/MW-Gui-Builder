@@ -1,6 +1,6 @@
 # Tutorial: Ionic Liquid [EMIM][TFSI] split by Pt electrode
 
-## 1. Generate the Water Box
+## 1. Generate the IL Box
 
 1. Launch the application:  
    ```bash
