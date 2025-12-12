@@ -245,9 +245,7 @@ class GuiBoxGenerator:
             while species[i] + str(j) in species != True:
                 j += 1
             species[i] = species[i] + str(j)
-            
-        print(species)
-        
+                    
         
         # Rewrite each file
         i = 2
@@ -324,15 +322,8 @@ class GuiBoxGenerator:
             idid = name + "_ff.xyz"
             
             self.molecule_ff_list.append(idid)
-            
-        print(self.molecule_ff_list)
-                                
+                                    
                     
-                                         
-              
-            
-
-
         # Construct fftool command
         command = "core/fftool"
         for mol, num in zip(self.molecule_ff_list, self.number_list):
@@ -374,9 +365,7 @@ class GuiBoxGenerator:
             while species[i] + str(j) in species != True:
                 j += 1
             species[i] = species[i] + str(j)
-            
-        print(species)
-            
+                    
         # Rewrite each file
         i = 2
         for mol in range(len(self.molecule_ff_list)):
@@ -411,3 +400,4 @@ class GuiBoxGenerator:
             messagebox.showinfo("Success", "Box generation complete.")
         except Exception as e:
             messagebox.showerror("Execution Error", f"An error occurred:\n{str(e)}")
+
