@@ -14,12 +14,10 @@ def distinct_species(mols):
      # List all the species contained in _pack.xyz
      for mol in range(len(mols)):
          file_pack = "molecules/" + mols[mol].split('.')[0] + "_pack.xyz"
-         print(f"Processing file: {file_pack}")
          with open(file_pack, 'r') as rfile:
              lines = rfile.readlines()
              for i in range(2, len(lines)):
                  species.append(lines[i].split()[0])
-                 print(f"Found species: {species[-1]}")
 
      # Distinguish different species
      for i in range(len(species)):
@@ -32,7 +30,6 @@ def distinct_species(mols):
      i = 2
      for mol in range(len(mols)):
          file_pack = "molecules/" + mols[mol].split('.')[0] + "_pack.xyz"
-         print(f"Rewriting file: {file_pack}")
          with open(file_pack, 'r') as rfile:
              lines = rfile.readlines()
              for j in range(2, len(lines)):
@@ -120,3 +117,4 @@ def communicate_box_data():
          
      
      print("A box with dimensions", max(x), 'x', max(y),'x', max(z), 'A. If you want to put an electrode without moving any electrolyte, place it at', max(z)+2.2,"A")
+
