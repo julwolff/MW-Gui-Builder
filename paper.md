@@ -67,14 +67,13 @@ that simplifies simulation setup.
 
 ## Software design
 
-The software has been designed to be easy to take in hand. It is so composed of a GUI menu. The required files respect the usual file form used in most molecular dynamics software.
+MW-Gui-Builder is organised around a clear and modular architecture that separates user interaction from scientific data processing. This design choice makes the software easy to use for beginners while remaining maintainable and extensible for developers.
 
-### Graphical User Interface
+The application is launched from a single entry point that initializes the graphical user interface (GUI). The GUI acts as the central control panel, allowing users to access the different tools required to prepare MetalWalls simulations. Each tool corresponds to a well-defined task in the simulation workflow, such as structure conversion, electrode generation, or input file preparation.
 
-The graphical user interface included in MW-Gui-Builder is designed to
-be intuitive and informative. It provides error messages, status
-updates, and progress indicators, making it accessible for all users,
-even those without prior experience.
+Behind the interface, the core logic is implemented in dedicated Python modules. These modules are responsible for reading molecular structure files, processing atomic and electrode data, enforcing the expected ordering and conventions, and writing simulation-ready input files. The GUI only handles user input, validation, and feedback, while all scientific and file-related operations are delegated to these core modules.
+
+This separation ensures a clean data flow: user actions trigger GUI callbacks, which call the appropriate core functions and return results or error messages to the interface. By following standard molecular dynamics file formats and keeping responsibilities clearly separated, MW-Gui-Builder integrates smoothly into existing workflows and can be easily extended with new features or tools.
 
 ## Research Impact Statement
 
