@@ -65,14 +65,22 @@ and parameter files in the required formats, operates within a Python
 environment for extensibility, and provides a graphical user interface
 that simplifies simulation setup.
 
-## Graphical User Interface
+## Software design
+
+The software has been designed to be easy to take in hand. It is so composed of a GUI menu. The required files respect the usual file form used in most molecular dynamics software.
+
+### Graphical User Interface
 
 The graphical user interface included in MW-Gui-Builder is designed to
 be intuitive and informative. It provides error messages, status
 updates, and progress indicators, making it accessible for all users,
 even those without prior experience.
 
-## Example
+## Research Impact Statement
+
+This software has been developped during a PhD project and was used to produce several initial system that have been published in ACS Omega in 2026
+
+### Example
 
 All examples are described in detail in the tutorials available on the
 project’s GitHub repository. The molecules and electrode files used in
@@ -127,5 +135,10 @@ Future developments will extend MW-Gui-Builder to support more complex
 electrodes, such as curved surfaces, partially covered electrodes, and
 bimetallic materials. These additions will allow researchers to model a
 broader range of realistic electrochemical interfaces.
+
+## AI usage disclosure
+
+No generative AI tools were used in the development of this software, the writing
+of this manuscript, or the preparation of supporting materials.
 
 # References
