@@ -65,6 +65,13 @@ and parameter files in the required formats, operates within a Python
 environment for extensibility, and provides a graphical user interface
 that simplifies simulation setup.
 
+## State of the field
+
+MetalWalls is an open-source molecular dynamics code specifically designed for the simulation of electrochemical systems, with a strong focus on interfaces involving metallic electrodes under constant potential conditions. A key step in running MetalWalls simulations is the generation of structure and input files that comply with the MetalWalls format, which encodes atomistic geometries, electrode definitions, and simulation parameters. While this format is powerful and flexible, manually creating or modifying these files can be time-consuming and error-prone, especially for complex geometries or for users less familiar with the internal structure of MetalWalls inputs.
+
+MW-Gui-Builder addresses this limitation by providing a dedicated graphical user interface (GUI) for the construction of MetalWalls-compatible structure files. The GUI enables users to visually assemble and manipulate atomic systems, significantly lowering the barrier to entry for setting up simulations. A central design choice of MW-Gui-Builder is its reliance on an adaptable `.xyz` format to describe atomic coordinates. The `.xyz` format is lightweight, human-readable, and widely supported by atomistic simulation and visualization tools, which facilitates interoperability and rapid prototyping. Within MW-Gui-Builder, `.xyz` files can be easily imported, edited, and extended to include MetalWalls-specific information, allowing users to iteratively refine their systems through an intuitive graphical workflow. By combining a user-friendly GUI with the flexibility of the `.xyz` format, MW-Gui-Builder streamlines the creation of MetalWalls input files and promotes reproducible and accessible simulation setup practices.
+
+
 ## Software design
 
 MW-Gui-Builder is organised around a clear and modular architecture that separates user interaction from scientific data processing. This design choice makes the software easy to use for beginners while remaining maintainable and extensible for developers.
