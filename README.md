@@ -4,7 +4,7 @@
 
 ---
 
-## 🔍 What Does It Do?
+## What Does It Do?
 
 MWGb automates the generation of the following MetalWalls input files ('.inpt') using as an input:
 
@@ -21,7 +21,7 @@ It includes internal tools to:
 
 ---
 
-## 🚀 Features
+## Features
 
 - Modular GUI with 4 independent tools:
   - ✅ Box generation via `fftool` and `Packmol`
@@ -36,7 +36,7 @@ It includes internal tools to:
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Requirements
 
@@ -52,7 +52,7 @@ cd MW-Gui-Builder
 pip install -r requirements.txt
 
 
-▶️ How to Use
+How to Use
 Launch the graphical interface from the root directory:
 
 
@@ -65,7 +65,7 @@ Format for MW	Converts .gro or .xyz to .inpt
 Electrode Generator	Adds electrodes based on lattice templates
 Parameter Generator	Writes .inpt files for MetalWalls
 
-📂 Input File Formats
+Input File Formats
 Detailed input file specifications can be found in the docs folder.
 
 Basic requirements:
@@ -75,12 +75,12 @@ mass.txt: List of element names and atomic masses
 .els: Atom types, charges, Lennard-Jones parameters, and force field terms
 electrode.txt: Crystal definitions and charge models for electrodes
 
-🧪 Testing (optional)
+Testing (optional)
 
 pytest core/tests/
 
 
-🧑‍🔬 Example Workflow
+Example Workflow
 
 1. Create your molecule and parameter files (.xyz, .els, electrode.txt)
 2. Open ElecSim via python main.py
@@ -90,7 +90,7 @@ pytest core/tests/
 6. Use Parameter Generator to define simulation settings in runtime.inpt
 7. Launch your MetalWalls simulation with the prepared files
 
-📄 License
+License
 
 This project is licensed under the MIT License.
 
