@@ -18,6 +18,8 @@ Create a new branch for your changes:
 ```bash
 git checkout -b my-feature
 ```
+If the work you do is assigned to a specific issue your are highly reccomanded to mention it in the name of the branch
+
 
 ### 4. Make Your Changes
 Make your changes or additions. Please ensure your code is well-documented and adheres to existing style.
