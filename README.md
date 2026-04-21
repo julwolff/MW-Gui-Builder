@@ -24,11 +24,10 @@ It includes internal tools to:
 ## Features
 
 - Modular GUI with 4 independent tools:
-  - ✅ Box generation via `fftool` and `Packmol`
-  - ✅ File conversion and atom reordering for `.inpt`
-  - ✅ Electrode lattice generation and insertion
-  - ✅ Full parameter`.inpt` file writer for NVE, NVT, NPT
-- Compatible with , `.xyz`, `.els`, using a `mass.txt`, `electrode.txt`
+  -  Box generation via `fftool` and `Packmol`
+  -  File conversion and atom reordering for `.inpt`
+  -  Electrode lattice generation and insertion
+  -  Full parameter`.inpt` file writer for NVE, NVT, NPT
 - Automatically recognizes molecules, ions, and electrodes
 - Supports charge types: `point`, `neutral`, `gaussian`
 - Uses Lorentz-Berthelot rules for Lennard-Jones parameters
