@@ -7,7 +7,7 @@ Created on Mon Jun 30 17:58:52 2025
 """
 
 import unittest
-from core.generate_electrode_coords import pre_run, hexagonal, CFC100, CFC110, CFC111
+from mw_gui_builder.core.generate_electrode_coords import pre_run, hexagonal, CFC100, CFC110, CFC111
 
 class TestStructureGenerator(unittest.TestCase):
 

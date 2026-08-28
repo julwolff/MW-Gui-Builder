@@ -8,7 +8,7 @@ Created on Mon Jun 30 17:59:55 2025
 
 import unittest
 import os
-from core.xyz2inp import (
+from mw_gui_builder.core.xyz2inp import (
     extract_lines_as_a_list,
     formate_lines,
     convert_list_from_int_to_string,

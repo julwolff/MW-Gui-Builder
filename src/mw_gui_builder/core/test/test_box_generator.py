@@ -12,7 +12,7 @@ import shutil
 from io import StringIO
 import sys
 
-from core.generate_box import (
+from mw_gui_builder.core.generate_box import (
     distinct_species,
     change_len_box,
     elongate_box,

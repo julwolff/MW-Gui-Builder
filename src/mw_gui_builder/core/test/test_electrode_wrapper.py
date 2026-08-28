@@ -18,8 +18,11 @@ import os
 
 # Simulate loading the module
 electrode_module = types.ModuleType("electrode_module")
-exec(open("../electrode_generator.py").read(), electrode_module.__dict__)
 
+from pathlib import Path
+
+electrode_generator_path = Path(__file__).parent.parent / "electrode_generator.py"
+exec(open(electrode_generator_path).read(), electrode_module.__dict__)
 
 class TestElectrodeModule(unittest.TestCase):
     
