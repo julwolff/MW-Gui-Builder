@@ -9,10 +9,12 @@ Created on Wed Jun  4 22:20:32 2025
 
 import tkinter as tk
 from tkinter import ttk
-from gui.box_generator import GuiBoxGenerator
-from gui.converter import GuiConverter
-from gui.electrode_builder import GuiElectrodeBuilder
-from gui.parameter_generator import GuiParameterGenerator
+from mw_gui_builder.gui.box_generator import GuiBoxGenerator
+from mw_gui_builder.gui.converter import GuiConverter
+from mw_gui_builder.gui.electrode_builder import GuiElectrodeBuilder
+from mw_gui_builder.gui.parameter_generator import GuiParameterGenerator
+
+
 
 class ElecSimGui:
     def __init__(self):
