@@ -21,7 +21,13 @@ electrode_module = types.ModuleType("electrode_module")
 
 from pathlib import Path
 
-electrode_generator_path = Path(__file__).parent.parent / "electrode_generator.py"
+electrode_generator_path = (
+    Path(__file__).parent.parent
+    / "src"
+    / "mw_gui_builder"
+    / "core"
+    / "electrode_generator.py"
+)
 exec(open(electrode_generator_path).read(), electrode_module.__dict__)
 
 class TestElectrodeModule(unittest.TestCase):
