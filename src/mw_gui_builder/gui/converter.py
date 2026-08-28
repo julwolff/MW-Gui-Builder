@@ -9,7 +9,7 @@ import os
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 
-from core.xyz2inp import (
+from mw_gui_builder.core.xyz2inp import (
     mw_file_writting,
     extract_lines_as_a_list,
     formate_lines,

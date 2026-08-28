@@ -8,7 +8,7 @@ Refactored on Mon Jun 30 2025 by ChatGPT
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-from core.parameter_writer import (
+from mw_gui_builder.core.parameter_writer import (
     search_molecule,
     instancie_molecules,
     instancie_species,

@@ -6,7 +6,7 @@ Modern GUI for ElecSim Box Generator
 import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
-from core.generate_box import communicate_box_data, elongate_box, change_len_box
+from mw_gui_builder.core.generate_box import communicate_box_data, elongate_box, change_len_box
 
 # CLASS
 

@@ -6,8 +6,8 @@ Created on Wed Jun  4 22:48:46 2025
 
 from tkinter import ttk
 from tkinter import StringVar
-from core.electrode_generator import electrode_loading, determin_box_size, insert_electrode
-from core.generate_electrode_coords import hexagonal, CFC100, CFC111, CFC110
+from mw_gui_builder.core.electrode_generator import electrode_loading, determin_box_size, insert_electrode
+from mw_gui_builder.core.generate_electrode_coords import hexagonal, CFC100, CFC111, CFC110
 
 class GuiElectrodeBuilder:
     """
