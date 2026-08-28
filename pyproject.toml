@@ -14,3 +14,8 @@ where = ["src"]
 
 [project.scripts]
 mw-gui-builder = "mw_gui_builder.main:ElecSimGui"
+
+[tool.setuptools.package-data]
+mw_gui_builder = [
+    "data/*.txt",
+]
