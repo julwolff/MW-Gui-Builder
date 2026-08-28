@@ -7,7 +7,7 @@ Created on Fri Jun 27 11:37:41 2025
 
 import math
 from itertools import combinations
-
+from importlib.resources import files
 
 def write_param_files(filein            = "simbox.xyz",
                       fileout           = 'runtime.inpt',
@@ -401,7 +401,8 @@ def instancie_species(molecules):
     
     # Open the mass ressources file
     
-    with open("ressources/mass.txt",'r') as mass_file:
+    with files("mw_gui_builder").joinpath("data/mass.txt").open("r") as mass_file:
+
         lines = mass_file.readlines()
         
         for i in range(len(lines)):
