@@ -11,3 +11,6 @@ requires-python = ">=3.10"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.scripts]
+mw-gui-builder = "mw_gui_builder.main:ElecSimGui"
