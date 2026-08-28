@@ -251,7 +251,7 @@ class GuiBoxGenerator:
         i = 2
         for mol in range(len(self.molecule_list)):
             file_pack = "molecules/" + self.molecule_list[mol].split('.')[0] + ".xyz"
-            file_dest = "molecules/" + self.molecule_list[mol].split('.')[0] + "_ff.xyz"
+            file_dest = "generated/" + self.molecule_list[mol].split('.')[0] + "_ff.xyz"
             
             print(f"Rewriting file: {file_pack}")
     
@@ -298,7 +298,7 @@ class GuiBoxGenerator:
             at_ff = Atom_ff(sto_ff[i], species[i])
             forcefield.append(at_ff)
             
-        with open("ff.ff",'w') as wfile:
+        with open("generated/ff.ff",'w') as wfile:
             
             lines = ["ATOMS\n","#   type   m/u     q/e    pot   pars\n"]
             
