@@ -40,7 +40,7 @@ class TestBoxUtils(unittest.TestCase):
             "  number 2\n"
             "  inside box 1.5000 1.5000 1.5000 15.0 15.0 15.0\n"
         )
-        with open("pack.inp", "w") as f:
+        with open("generated/pack.inp", "w") as f:
             f.write(self.pack_inp_content)
 
 
@@ -54,7 +54,7 @@ class TestBoxUtils(unittest.TestCase):
 
     def test_change_len_box(self):
         change_len_box()
-        with open("pack.inp", "r") as f:
+        with open("generated/pack.inp", "r") as f:
             content = f.read()
         # Expected values from box length conversion
         self.assertIn("31.5", content)
@@ -62,7 +62,7 @@ class TestBoxUtils(unittest.TestCase):
 
     def test_elongate_box(self):
         elongate_box(4)
-        with open("pack.inp", "r") as f:
+        with open("generated/pack.inp", "r") as f:
             content = f.read()
         self.assertIn("50.4", content)
         self.assertIn(".", content)

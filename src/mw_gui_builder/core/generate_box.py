@@ -49,7 +49,7 @@ def distinct_species(mols):
  # Function to change the length of the box
 def change_len_box():
      # Open the input file
-     with open("pack.inp", 'r') as inp:
+     with open("generated/pack.inp", 'r') as inp:
          # Read lines
          lines = inp.readlines()
          xy_box, z_box = None, None
@@ -69,13 +69,13 @@ def change_len_box():
                  range_box[6] = str(xy_box)
                  range_box[7] = str(z_box)
                  lines[i] = " ".join(range_box) + "\n"
-     with open("pack.inp", 'w') as inp:
+     with open("generated/pack.inp", 'w') as inp:
          inp.writelines(lines)
          
 
  # Function to elongate the box
 def elongate_box(multiplier):
-     with open("pack.inp", 'r') as inp:
+     with open("generated/pack.inp", 'r') as inp:
          # Read lines
          lines = inp.readlines()
          for i in lines:
@@ -96,13 +96,13 @@ def elongate_box(multiplier):
                  range_box[6] = str(xy_box)
                  range_box[7] = str(z_box)
                  lines[i] = " ".join(range_box) + "\n"
-     with open("pack.inp", 'w') as inp:
+     with open("generated/pack.inp", 'w') as inp:
          inp.writelines(lines)
          
          
 def communicate_box_data():
      
-     with open('pack.inp','r') as inp:
+     with open('generated/pack.inp','r') as inp:
          file = inp.readlines()
          
          x,y,z = [], [], []

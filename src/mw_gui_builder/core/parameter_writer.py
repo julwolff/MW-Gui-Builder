@@ -363,7 +363,7 @@ def instancie_molecules(mols):
     
     # Open pack.inp that contains all non-electrode molecules
 
-    with open("pack.inp",'r') as packfile:
+    with open("generated/pack.inp",'r') as packfile:
         
         lines=packfile.readlines()
         
