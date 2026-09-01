@@ -7,6 +7,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
 from mw_gui_builder.core.generate_box import communicate_box_data, elongate_box, change_len_box
+import shutil
 
 # CLASS
 
@@ -336,7 +337,8 @@ class GuiBoxGenerator:
         try:
             messagebox.showinfo("Running", "Generating packmol file with fftool...")
             subprocess.call(command, shell=True)
-
+            shutil.move("pack.inp", "generated/pack.inp")
+            
             if self.box_selected:
                 change_len_box()
             elif self.quarter_selected:
@@ -393,7 +395,7 @@ class GuiBoxGenerator:
 
         try:
             messagebox.showinfo("Packmol", "Launching packmol...")
-            subprocess.call("packmol < pack.inp", shell=True)
+            subprocess.call("packmol < generated/pack.inp", shell=True)
             communicate_box_data()
 
             messagebox.showinfo("Success", "Box generation complete.")
