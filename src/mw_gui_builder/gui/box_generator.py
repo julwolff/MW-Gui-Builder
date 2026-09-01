@@ -28,7 +28,7 @@ class Atom_ff:
         
         
         
-        with open("ressources/mass.txt",'r') as mass_file:
+        with open("data/mass.txt",'r') as mass_file:
             lines = mass_file.readlines()
             
             for i in range(len(lines)):
@@ -370,7 +370,7 @@ class GuiBoxGenerator:
         i = 2
         for mol in range(len(self.molecule_ff_list)):
             file_pack = "molecules/" + self.molecule_list[mol].split('.')[0] + ".xyz"
-            file_dest = "molecules/" + self.molecule_ff_list[mol].split('.')[0] + "_pack.xyz"
+            file_dest = "generated/" + self.molecule_ff_list[mol].split('.')[0] + "_pack.xyz"
             
             print(f"Rewriting file: {file_pack}")
     

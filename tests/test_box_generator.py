@@ -23,12 +23,12 @@ from mw_gui_builder.core.generate_box import (
 class TestBoxUtils(unittest.TestCase):
 
     def setUp(self):
-        os.makedirs("molecules", exist_ok=True)
+        os.makedirs("generated", exist_ok=True)
         # Create dummy molecule packed files
         self.mol_files = ["mol1.xyz", "mol2.xyz"]
         content = "6\ncomment\nC 0 0 0\nC 1 1 1\nH 2 2 2\nH 3 3 3\nO 4 4 4\nO 5 5 5\n"
         for mol in self.mol_files:
-            with open(f"molecules/{mol.split('.')[0]}_pack.xyz", "w") as f:
+            with open(f"generated/{mol.split('.')[0]}_pack.xyz", "w") as f:
                 f.write(content)
 
         # Create a dummy pack.inp file
@@ -47,7 +47,7 @@ class TestBoxUtils(unittest.TestCase):
     def test_distinct_species(self):
         distinct_species(self.mol_files)
         # Check that new species names were written (e.g., C0, C1, H0, etc.)
-        with open("molecules/mol1_pack.xyz", "r") as f:
+        with open("generated/mol1_pack.xyz", "r") as f:
             content = f.read()
             self.assertIn("C0", content)
             self.assertIn("H0", content)

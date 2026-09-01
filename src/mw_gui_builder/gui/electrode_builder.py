@@ -101,7 +101,7 @@ class GuiElectrodeBuilder:
             buffer = float(self.buffer_entry.get())
 
             # Save .els file
-            with open(f"molecules/electrode_{electrode_name}.els", 'w') as file:
+            with open(f"generated/electrode_{electrode_name}.els", 'w') as file:
                 file.write(f"{self.name} {self.mass} {self.gaussian_width} {self.epsilon} {self.sigma} {self.Tf} {self.voronoi}")
             print(f"[INFO] .els file written for {electrode_name}")
 

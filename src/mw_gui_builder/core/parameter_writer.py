@@ -594,7 +594,7 @@ def add_parameters(molecules,species,electrodes):
     
     for electrode in electrodes:
         
-        with open(f"molecules/electrode_{electrode.name}.els") as elecfile:
+        with open(f"generated/electrode_{electrode.name}.els") as elecfile:
             
             lines = elecfile.readlines()
             

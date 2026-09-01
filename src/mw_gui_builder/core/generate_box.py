@@ -13,7 +13,7 @@ def distinct_species(mols):
 
      # List all the species contained in _pack.xyz
      for mol in range(len(mols)):
-         file_pack = "molecules/" + mols[mol].split('.')[0] + "_pack.xyz"
+         file_pack = "generated/" + mols[mol].split('.')[0] + "_pack.xyz"
          with open(file_pack, 'r') as rfile:
              lines = rfile.readlines()
              for i in range(2, len(lines)):
@@ -29,7 +29,7 @@ def distinct_species(mols):
      # Rewrite each file
      i = 2
      for mol in range(len(mols)):
-         file_pack = "molecules/" + mols[mol].split('.')[0] + "_pack.xyz"
+         file_pack = "generated/" + mols[mol].split('.')[0] + "_pack.xyz"
          with open(file_pack, 'r') as rfile:
              lines = rfile.readlines()
              for j in range(2, len(lines)):

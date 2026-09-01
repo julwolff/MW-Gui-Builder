@@ -7,6 +7,8 @@ Created on Wed Jun  4 22:20:32 2025
 
 # main.py
 
+
+from pathlib import Path
 import tkinter as tk
 from tkinter import ttk
 from mw_gui_builder.gui.box_generator import GuiBoxGenerator
@@ -18,6 +20,11 @@ from mw_gui_builder.gui.parameter_generator import GuiParameterGenerator
 
 class ElecSimGui:
     def __init__(self):
+        
+        
+        #Create dir for generated file
+        Path("generated").mkdir(exist_ok=True)
+        
         # Create the main window
         self.window = tk.Tk()
         self.window.title("GUI Builder")

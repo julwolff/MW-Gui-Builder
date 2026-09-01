@@ -36,7 +36,7 @@ class Electrode_options:
 
 def electrode_loading():
     """
-    Load electrode data from 'ressources/electrode.txt' file.
+    Load electrode data from 'data/electrode.txt' file.
 
     Returns:
     - electrodes (list): List of Electrode_options objects loaded from file.
