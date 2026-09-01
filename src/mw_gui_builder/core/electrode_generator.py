@@ -7,9 +7,9 @@ Created on Fri Jun 27 11:17:03 2025
 Module for electrode options management and insertion into coordinate files.
 """
 
+from importlib.resources import files
 import numpy as np
 import os
-from importlib.resources import files
 
 class Electrode_options:
     def __init__(self, field):
@@ -44,7 +44,7 @@ def electrode_loading():
     Raises:
     - FileNotFoundError: If the electrode data file does not exist.
     """
-    filepath = files("mw_gui_builder").joinpath("data/electrode.txt")
+    filepath = files("mw_gui_builder.data").joinpath("electrode.txt")
     if not os.path.isfile(filepath):
         raise FileNotFoundError(f"Electrode data file '{filepath}' not found.")
     dat = np.loadtxt(filepath, dtype=str, skiprows=1)

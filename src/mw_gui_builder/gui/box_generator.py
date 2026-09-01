@@ -2,7 +2,7 @@
 """
 Modern GUI for ElecSim Box Generator
 """
-
+from importlib.resources import files
 import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
@@ -27,8 +27,7 @@ class Atom_ff:
             self.epsilon = 0.000
         
         
-        
-        with open("data/mass.txt",'r') as mass_file:
+        with files("mw_gui_builder.data").joinpath("mass.txt").open("r") as mass_file:
             lines = mass_file.readlines()
             
             for i in range(len(lines)):
