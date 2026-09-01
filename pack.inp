@@ -1,6 +1,0 @@
-structure mol1.xyz
-  number 2
-  inside box 1.5000 1.5000 1.5000 15.0 15.0 15.0
-structure mol2.xyz
-  number 2
-  inside box 1.5000 1.5000 1.5000 15.0 15.0 15.0

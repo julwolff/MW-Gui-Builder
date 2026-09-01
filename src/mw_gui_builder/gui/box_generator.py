@@ -261,7 +261,7 @@ class GuiBoxGenerator:
                     i += 1
                 
                 tmp_name = lines[1].split()
-                tmp_name.append('ff.ff\n')
+                tmp_name.append('generated/ff.ff\n')
                 lines[1] = ' '.join(tmp_name)
                     
             # Rewrite in the files
@@ -324,9 +324,9 @@ class GuiBoxGenerator:
                                     
                     
         # Construct fftool command
-        command = "core/fftool"
+        command = str(files("mw_gui_builder").joinpath("bin", "fftool"))
         for mol, num in zip(self.molecule_ff_list, self.number_list):
-            command += f" {num} molecules/{mol}"
+            command += f" {num} generated/{mol}"
 
         if self.density_selected:
             command += f" -r {self.size_entry.get()}"
@@ -380,7 +380,7 @@ class GuiBoxGenerator:
                     i += 1
                 
                 tmp_name = lines[1].split()
-                tmp_name.append('ff.ff\n')
+                tmp_name.append('generated/ff.ff\n')
                 lines[1] = ' '.join(tmp_name)
                     
             # Rewrite in the files

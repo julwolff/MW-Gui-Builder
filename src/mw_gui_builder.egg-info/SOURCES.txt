@@ -8,6 +8,7 @@ src/mw_gui_builder.egg-info/SOURCES.txt
 src/mw_gui_builder.egg-info/dependency_links.txt
 src/mw_gui_builder.egg-info/entry_points.txt
 src/mw_gui_builder.egg-info/top_level.txt
+src/mw_gui_builder/bin/fftool
 src/mw_gui_builder/core/__init__.py
 src/mw_gui_builder/core/electrode_generator.py
 src/mw_gui_builder/core/generate_box.py
