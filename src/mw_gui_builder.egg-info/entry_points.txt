@@ -1,0 +1,2 @@
+[console_scripts]
+mw-gui-builder = mw_gui_builder.main:ElecSimGui

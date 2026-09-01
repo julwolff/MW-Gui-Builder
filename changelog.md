@@ -141,3 +141,29 @@ Because v3.0.0 reorganizes the codebase and renames several core functions, plea
 
 ---
 
+
+# Change[4.8.26] - 2026-09-01
+
+## Changed
+
+    Reorganized the package structure to separate user-provided molecule files from generated working files.
+
+    User-provided molecular structures and force-field files are now read from the molecules/ working directory.
+
+    Generated intermediate files are now stored in the generated/ directory.
+
+    Final simulation outputs such as simbox.xyz remain in the working directory.
+
+    Bundled the external fftool executable with the Python package.
+
+    Internal package data (mass.txt and electrode.txt) is now distributed with the package.
+
+    Updated file handling to support running mw-gui-builder from a working directory outside the source repository.
+
+## Fixed
+
+    Fixed file path handling for generated molecular and force-field files.
+
+    Fixed pack.inp handling so that it is stored in the generated/ directory.
+
+    Fixed execution of the bundled fftool executable when using an installed package.

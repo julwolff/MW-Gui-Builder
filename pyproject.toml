@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mw-gui-builder"
+version = "4.8.26"
+description = "GUI and utilities for preparing MetalWalls simulations"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "packmol",
+    "numpy",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+mw-gui-builder = "mw_gui_builder.main:ElecSimGui"
+
+[tool.setuptools.package-data]
+mw_gui_builder = [
+    "data/*.txt",
+    "bin/fftool",
+]
