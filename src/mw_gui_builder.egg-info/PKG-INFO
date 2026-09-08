@@ -6,6 +6,7 @@ Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: packmol
+Requires-Dist: numpy
 Dynamic: license-file
 
 # Metalwalls-Gui-Builder
