@@ -1,0 +1,8 @@
+O0 point -0.84844800 0.65214350 3.17796000
+H1 point 0.42422400
+H2 point 0.42422400
+PARAMETERS
+    constraint 0  1   1.808845846492
+    constraint 0  2   1.808845846492
+    constraint 1  2   2.860857616948
+    constraints_algorithm rattle 1.0e-9 100
