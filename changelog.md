@@ -167,3 +167,164 @@ Because v3.0.0 reorganizes the codebase and renames several core functions, plea
     Fixed pack.inp handling so that it is stored in the generated/ directory.
 
     Fixed execution of the bundled fftool executable when using an installed package.
+
+    # Changelog
+
+All notable changes to MW-Gui-Builder will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+---
+
+## [4.9.0] - 2026-10-06
+
+### Added
+
+#### Packaging and installation
+
+* Added a complete `pyproject.toml` configuration.
+* MW-Gui-Builder is now installable with:
+
+```bash
+pip install .
+```
+
+* Added the command-line entry point:
+
+```bash
+mw-gui-builder
+```
+
+* Bundled the `fftool` executable inside the package:
+
+```text
+src/mw_gui_builder/bin/fftool
+```
+
+* Added automatic installation of Python dependencies through `pyproject.toml`.
+* Added Packmol as an optional installation dependency.
+
+#### Data files
+
+* Embedded package data:
+
+  * `data/electrode.txt`
+  * `data/mass.txt`
+
+* Updated data loading using:
+
+```python
+importlib.resources
+```
+
+This allows MW-Gui-Builder to work correctly when installed with `pip`.
+
+#### Documentation
+
+* Added `start.md`:
+
+  * installation instructions,
+  * virtual environment setup,
+  * first launch tutorial.
+
+* Added `workflow.md`:
+
+  * description of generated files,
+  * explanation of the simulation preparation workflow.
+
+* Improved `README.md`:
+
+  * updated installation instructions,
+  * added workflow description,
+  * documented package structure,
+  * clarified generated files.
+
+* Added example molecule documentation.
+
+#### Testing
+
+* Added and improved pytest test suite.
+
+Current coverage includes:
+
+* molecular file conversion,
+* electrode generation,
+* molecular pattern detection,
+* box generation,
+* packaged data access,
+* force-field generation,
+* coordinate formatting.
+
+Additional tests were added for:
+
+* electrode database loading,
+* packaged resources,
+* coordinate sorting,
+* empty file handling,
+* box scaling,
+* molecular recognition.
+
+#### Electrode database
+
+* Improved electrode database handling.
+* Added validation tests for electrode parameters.
+* Added support for future extension of the electrode database.
+
+#### GUI improvements
+
+* Improved handling of generated files.
+* Improved path management for installed packages.
+* Updated fftool execution using package resources.
+* Improved compatibility outside the source directory.
+
+#### Generated files
+
+Generated files are now consistently written to:
+
+```text
+generated/
+```
+
+including:
+
+```text
+generated/ff.ff
+generated/pack.inp
+generated/*_ff.xyz
+generated/electrode_*.els
+```
+
+#### Community contributions
+
+* Added external feature requests through GitHub Issues.
+* Improved documentation based on user feedback.
+* Added molecule examples and electrode extensions following community suggestions.
+
+---
+
+### Changed
+
+* Replaced hard-coded file paths with package resource access.
+* Updated fftool execution system.
+* Updated installation workflow.
+* Updated documentation structure.
+* Improved compatibility with pip installations.
+* Improved package portability.
+
+---
+
+### Fixed
+
+* Fixed fftool execution after installation.
+* Fixed missing packaged files.
+* Fixed `electrode.txt` access in installed versions.
+* Fixed `mass.txt` access in installed versions.
+* Fixed Packmol file generation.
+* Fixed `pack.inp` generation.
+* Fixed generated file locations.
+* Fixed path handling outside the source repository.
+* Fixed issues related to temporary directories.
+* Fixed installation inconsistencies.
+
+---
+
