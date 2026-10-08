@@ -66,6 +66,28 @@ class TestElectrodeModule(unittest.TestCase):
         self.assertEqual(n_moles, 2)
         self.assertIn("O0", mols[0])
         self.assertIn("Cl0", mols[1])
+        
+    def test_determin_box_size_with_negative_coordinates(self):
+        """Box dimensions should account for negative coordinates."""
+        mock_data = (
+            "2\n"
+            "Comment\n"
+            "H -2.0 -3.0 0.0\n"
+            "O 1.0 2.0 1.0\n"
+        )
 
-unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromTestCase(TestElectrodeModule))
+        with patch.object(
+            electrode_module,
+            "open",
+            mock_open(read_data=mock_data)
+        ):
+            xmax, ymax = electrode_module.determin_box_size("dummy.xyz")
 
+        self.assertAlmostEqual(xmax, 1.0 + 1.5)
+        self.assertAlmostEqual(ymax, 2.0 + 1.5)
+
+
+
+
+if __name__ == '__main__':
+    unittest.main()

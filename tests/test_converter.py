@@ -17,6 +17,8 @@ from mw_gui_builder.core.xyz2inp import (
     sort_atom_by_species,
 )
 
+
+
 class TestConverterUtils(unittest.TestCase):
 
     def setUp(self):
@@ -85,6 +87,76 @@ class TestConverterUtils(unittest.TestCase):
         self.assertIn("num_atoms", lines[2])
         self.assertIn("num_electrode_atoms", lines[3])
         self.assertIn("10.0 10.0 10.0", lines[5])
+
+    def test_extract_lines_from_empty_file(self):
+        """An empty file should return an empty list."""
+        empty_file = "empty_test.txt"
+
+        with open(empty_file, "w"):
+            pass
+
+        try:
+            result = extract_lines_as_a_list(empty_file)
+            self.assertEqual(result, [])
+        finally:
+            if os.path.exists(empty_file):
+                os.remove(empty_file)
+
+    def test_formate_lines_with_mixed_whitespace(self):
+        """Formatting should normalize spaces and tabs."""
+        input_lines = [
+            "   H    0.0    1.0    2.0   ",
+            "\tO\t3.0\t4.0\t5.0\t",
+            "Na  6.0  7.0  8.0",
+        ]
+
+        result = formate_lines(input_lines)
+
+        self.assertEqual(
+            result,
+            [
+                "H 0.0 1.0 2.0",
+                "O 3.0 4.0 5.0",
+                "Na 6.0 7.0 8.0",
+            ],
+        )
+
+    def test_convert_list_from_int_to_string_with_negative_values(self):
+        """Integer conversion should also work for negative values."""
+        result = convert_list_from_int_to_string([-3, 0, 7])
+
+        self.assertEqual(result, ["-3", "0", "7"])
+
+    def test_sort_atom_by_species_preserves_atom_count(self):
+        """Sorting atoms must not add or remove atoms."""
+        atoms = [
+            "O 1.0 1.0 1.0",
+            "H 0.0 0.0 0.0",
+            "Na 2.0 2.0 2.0",
+            "O 1.5 1.5 1.5",
+            "H 0.5 0.5 0.5",
+        ]
+
+        result = sort_atom_by_species(atoms)
+
+        self.assertEqual(len(result), len(atoms))
+        self.assertCountEqual(result, atoms)
+
+    def test_enlarge_box_preserves_species(self):
+        """Box enlargement must preserve atom species."""
+        atoms = [
+            "H 1.0 1.0 1.0",
+            "O 2.0 2.0 2.0",
+            "Na 3.0 3.0 3.0",
+        ]
+
+        result = enlarge_box(
+            ["comment 1", "comment 2"] + atoms
+        )
+
+        species = [line.split()[0] for line in result]
+
+        self.assertEqual(species, ["H", "O", "Na"])
 
 if __name__ == "__main__":
     unittest.main()

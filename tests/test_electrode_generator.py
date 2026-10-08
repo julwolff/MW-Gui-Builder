@@ -8,6 +8,74 @@ Created on Mon Jun 30 17:58:52 2025
 
 import unittest
 from mw_gui_builder.core.generate_electrode_coords import pre_run, hexagonal, CFC100, CFC110, CFC111
+from mw_gui_builder.core.electrode_generator import electrode_loading
+from importlib.resources import files
+
+class TestElectrodeDatabase(unittest.TestCase):
+
+    def setUp(self):
+        self.electrodes = electrode_loading()
+
+    def test_database_is_not_empty(self):
+        """The electrode database must contain at least one electrode."""
+        self.assertGreater(len(self.electrodes), 0)
+
+    def test_required_electrodes_are_available(self):
+        """Check that the default electrode database contains the supported electrodes."""
+        expected = [
+            "C",
+            "Pt(100)",
+            "Pt(110)",
+            "Pt(111)",
+        ]
+
+        available = [electrode.name for electrode in self.electrodes]
+
+        for name in expected:
+            self.assertIn(name, available)
+
+    def test_electrode_parameters_are_positive(self):
+        """All physical and model parameters must be positive."""
+        for electrode in self.electrodes:
+            self.assertGreater(float(electrode.a), 0)
+            self.assertGreater(float(electrode.b), 0)
+            self.assertGreater(float(electrode.c), 0)
+            self.assertGreater(float(electrode.mass), 0)
+            self.assertGreater(float(electrode.epsilon), 0)
+            self.assertGreater(float(electrode.sigma), 0)
+            self.assertGreater(float(electrode.gaussian_width), 0)
+            self.assertGreater(float(electrode.Tf), 0)
+            self.assertGreater(float(electrode.voronoi), 0)
+
+    def test_fcc_electrodes_have_supported_geometry(self):
+        """FCC electrodes must use one of the supported surface geometries."""
+        supported = {
+            "CFC(100)",
+            "CFC(110)",
+            "CFC(111)",
+        }
+
+        for electrode in self.electrodes:
+            if electrode.name != "C":
+                self.assertIn(electrode.geom, supported)
+
+    def test_platinum_parameters(self):
+        """Check the reference lattice and mass values for platinum."""
+        expected = {
+            "Pt(100)": (3.923, 106.42),
+            "Pt(110)": (3.923, 106.42),
+            "Pt(111)": (3.923, 106.42),
+        }
+
+        for name, (lattice, mass) in expected.items():
+            electrode = next(
+                electrode
+                for electrode in self.electrodes
+                if electrode.name == name
+            )
+
+            self.assertAlmostEqual(float(electrode.a), lattice)
+            self.assertAlmostEqual(float(electrode.mass), mass)
 
 class TestStructureGenerator(unittest.TestCase):
 
@@ -65,5 +133,16 @@ class TestStructureGenerator(unittest.TestCase):
         self.assertGreater(len(coords_110), 0)
         self.assertGreater(len(coords_111), 0)
 
+class TestPackagedData(unittest.TestCase):
+
+    def test_electrode_database_file_is_packaged(self):
+        """The electrode database must be available from the installed package."""
+        electrode_file = files(
+            "mw_gui_builder"
+        ).joinpath("data", "electrode.txt")
+
+        self.assertTrue(electrode_file.is_file())
+
 if __name__ == '__main__':
     unittest.main()
+
