@@ -16,7 +16,7 @@ Sections:
 
 ---
 
-## [3.0.0] - 2026-08-27
+## pre[3.0.0] - 2026-08-27
 Major release: refactor and packaging milestone. This release reorganizes the project as an installable Python package, introduces CI and tests, improves documentation, and renames a small set of core functions (breaking API). These changes are intended to make MW‑Gui easier to install, test, and contribute to.
 
 ### Added
@@ -61,7 +61,7 @@ Major release: refactor and packaging milestone. This release reorganizes the pr
 
 ---
 
-## [0.1.0] - 2025-06-30
+## [3.0.0] - 2025-06-30
 Initial public release.
 
 ### Added
@@ -142,7 +142,7 @@ Because v3.0.0 reorganizes the codebase and renames several core functions, plea
 ---
 
 
-# Change[4.8.26] - 2026-09-01
+# Change[3.8.26] - 2026-09-01
 
 ## Changed
 
@@ -176,7 +176,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
-## [4.9.0] - 2026-10-06
+## [3.10.6] - 2026-10-06
 
 ### Added
 
