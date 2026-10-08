@@ -1,5 +1,4 @@
-cat tests/test_converter.py
-cat tests/test_electrode_wrapper.py
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
