@@ -76,11 +76,25 @@ class TestBoxUtils(unittest.TestCase):
         self.assertIn("A box with dimensions", output)
         self.assertIn("place it at", output)
         
-    # def tearDown(self):
-    #     if os.path.exists("pack.inp"):
-    #         os.remove("pack.inp")
-    #     if os.path.exists("molecules"):
-    #         shutil.rmtree("molecules")
+    def test_elongate_box_preserves_structure_entries(self):
+        """Elongating the box must preserve molecule structure entries."""
+        original = (
+            "structure mol1.xyz\n"
+            "  number 2\n"
+            "  inside box 1.5000 1.5000 1.5000 15.0 15.0 15.0\n"
+        )
+
+        with open("generated/pack.inp", "w") as f:
+            f.write(original)
+
+        elongate_box(4)
+
+        with open("generated/pack.inp", "r") as f:
+            content = f.read()
+
+        self.assertIn("structure mol1.xyz", content)
+        self.assertIn("number 2", content)
+        self.assertIn("inside box", content)
 
 
 if __name__ == "__main__":
