@@ -71,7 +71,8 @@ Its constant-potential method overcomes limitations of previous
 approaches, enabling accurate representation of electrochemical
 interfaces. Nevertheless, the presence of explicit metallic electrodes
 introduces new challenges in system construction. The specific file
-formats required by MetalWalls make earlier builders incompatible.
+formats required by MetalWalls make earlier builders incompatible and
+the Metalwalls community specifically asked for a usable builder.
 
 This paper introduces *MW-Gui-Builder*, a dedicated tool for building
 constant-potential simulations in MetalWalls. It generates structure
@@ -148,8 +149,11 @@ Two Pt(100) electrodes of length *8 Å* are placed at *z = 0 Å* and *z = 130 Å
 The package is currently in active use at the *Institut de Chimie et
 Procédés pour l’Énergie, l’Environnement et la Santé (ICPEES)* as part
 of multiple research initiatives focusing on the electrochemical double
-layer. These projects fall within the DECODE program, which aims to
+layer. These projects fall within the DECODE project (Horizon Europe  101135537), which aims to
 elucidate local reaction environments in electrochemical systems.
+
+This package was also included in the FULLMAP project (Horizon  101192848) 
+to provide base into material simulation process.
 
 Future developments will extend MW-Gui-Builder to support more complex
 electrodes, such as curved surfaces, partially covered electrodes, and
