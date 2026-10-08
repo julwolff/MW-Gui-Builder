@@ -9,25 +9,39 @@ authors:
   - name: Wolff Jules
     orcid: 0009-0002-3222-4159
     equal-contrib: true
-    affiliation: "1, 2"
+    affiliation: "1, 2, 3"
+  - name: Lucie Pepe
+    orcid: 0009-0009-4166-6697
+    equal-contrib: true
+    affiliation: "4"
 affiliations:
   - name: "Institut de Chimie et Procédés pour l'Energie, l'Environnement et la Santé, UMR 7515 CNRS-University of Strasbourg, France"
     index: 1
   - name: "Laboratoire d'Electrochimie et de Chimie Physique du corps solide, Institut de Chimie de Strasbourg, UMR 7177 CNRS-University of Strasbourg, France"
     index: 2
+  - name: "Department of Knowledge-driven Design, VTT Technical Research Centre of Finland Ltd, Espoo, Finland"
+    index: 3
+  - name: "Faculty of Mathematics and Physics, Charles University, Prague, Czech Republic"
+    index: 4
 date: 18 November 2025
 bibliography: paper.bib
 ---
 
 # "MW-Gui-Builder": An interface for simplified preparation for Metalwalls package application
 
-Jules Wolff<sup>1,2</sup>
+Jules Wolff<sup>1,2,3</sup>, Lucie Pepe<sup>4</sup>
 
 <sup>1</sup>Institut de Chimie et Procédés pour l'Énergie, l'Environnement et la
 Santé, UMR 7515 CNRS-University of Strasbourg
 
 <sup>2</sup>Laboratoire d'Electrochimie et de Chimie Physique du corps solide,
 Institut de Chimie de Strasbourg, UMR 7177 CNRS-University of Strasbourg
+
+<sup>3</sup>Department of Knowledge-driven Design, 
+VTT Technical Research Centre of Finland Ltd, Espoo, Finland
+
+<sup>4</sup>Faculty of Mathematics and Physics, 
+Charles University, Prague, Czech Republic
 
 ## Summary
 
