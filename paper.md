@@ -99,7 +99,7 @@ This separation ensures a clean data flow: user actions trigger GUI callbacks, w
 
 ## Research Impact Statement
 
-This software has been developped during a PhD project and was used to produce several initial system that have been published in ACS Omega in 2026
+This software has been developped during a PhD project and was used to produce several initial system that have been published in ACS Omega in 2026[@wolff2026]
 
 ### Example
 
